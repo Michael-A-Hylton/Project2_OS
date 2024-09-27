@@ -4,7 +4,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <sched.h>
-#include "sthread.h"
+#include "/home/michael-hylton/Desktop/Operating_Systems/sthread/sthread.h"
 
 #define NUMTHR 10
 #define NUMLOOP 25
