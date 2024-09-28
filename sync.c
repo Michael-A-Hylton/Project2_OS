@@ -1,5 +1,5 @@
 /*
- * Michael Hylton.c
+ * NAME, etc.
  *
  * sync.c
  *
@@ -18,9 +18,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/mman.h>
-#include <stdbool.h>
 #include "sthread.h"
-#include "sync.h"
 
 /*
  * Atomic operations for x86 architecture.
@@ -51,92 +49,48 @@ static inline void clear_bit(volatile unsigned long *addr)
 
 int sthread_rwlock_init(sthread_rwlock_t *rwlock)
 {
-        printf("\nInitiate rwlock\n");
-        rwlock->numOfReaders=0;
-        rwlock->numOfWriters=0;
+        /* FILL ME IN! */
         return 0;
 }
 
 int sthread_rwlock_destroy(sthread_rwlock_t *rwlock)
 {
-    //reset all variables to their original conditions.
-    printf("\nDestroy rwlock\n");
-    rwlock->numOfReaders = 0; 
-    rwlock->numOfWriters = 0;
-    rwlock->queuedReaders = NULL; 
-    rwlock->queuedWriters = NULL; 
-    return 0;
+        /* FILL ME IN! */
+        return 0;
 }
 
 int sthread_read_lock(sthread_rwlock_t *rwlock)
 {
-        //keeps the thread lock while writing
-        printf("\nRead Lock\n");
-        while(true){
-          if (rwlock->numOfWriters ==0){ 
-            rwlock->numOfReaders++; //initiate the lock
-            return 0;
-          }
-          sthread_suspend(); // if the writer or reader is active, it suspeneds
-        }
+        /* FILL ME IN! */
+        return 0;
 }
 
 int sthread_read_try_lock(sthread_rwlock_t *rwlock)
 {
-        printf("\nTried Read\n");
-        if(rwlock->numOfReaders==0){
-          rwlock->numOfReaders++;
-          return 0;
-        }
-        return -1;
+        /* FILL ME IN! */
+        return 0;
 }
 
 int sthread_read_unlock(sthread_rwlock_t *rwlock)
 {
-        printf("\nread unlock\n");
-        rwlock->numOfReaders--;
-        //if no readers exist after decrementing, wakeup the next queued writers
-        if (rwlock->numOfReaders ==0){ 
-            if(rwlock->queuedWriters){
-              sthread_wake(rwlock->queuedWriters); 
-            }
-          } 
+        /* FILL ME IN! */
         return 0;
 }
 
 int sthread_write_lock(sthread_rwlock_t *rwlock)
 {
-        printf("\nWrite lock\n");
-        while(true){
-          if (rwlock->numOfReaders ==0 && rwlock->numOfWriters==0){ 
-            rwlock->numOfWriters++; //initiate the lock
-            return 0;
-          }
-          sthread_suspend(); // if the writer is active, it suspeneds
-        }
-        
+        /* FILL ME IN! */
+        return 0;
 }
 
 int sthread_write_try_lock(sthread_rwlock_t *rwlock)
 {
-        printf("\nTried write\n");
-        if (rwlock->numOfReaders == 0 && rwlock->numOfWriters == 0) {
-          rwlock->numOfWriters++;
-          return 0;
-        }
-        return -1;
+        /* FILL ME IN! */
+        return 0;
 }
 
 int sthread_write_unlock(sthread_rwlock_t *rwlock)
 {
-        printf("\nWrite unlock\n");
-        rwlock->numOfWriters--;
-        //if no readers exist after decrementing, wakeup the next queued writers or queued reader
-        if (rwlock->numOfReaders ==0){ 
-            sthread_wake(rwlock->queuedReaders); //first try the readers
-            sthread_wake(rwlock->queuedWriters); //then try the writer
-            
-          } 
+        /* FILL ME IN! */
         return 0;
 }
-
