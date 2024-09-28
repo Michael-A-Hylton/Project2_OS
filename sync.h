@@ -6,14 +6,14 @@
 
 #ifndef _STHREAD_SYNC_H_
 #define _STHREAD_SYNC_H_
-#include "Sthread.h"
+
 
 struct sthread_rwlock_struct {
-	int numOfReaders;
+        int numOfReaders;
 	int numOfWriters;
-	sthread_t QueuedReaders;
-	sthread_t QueuedWriters;
-}sthread_rwlock_t;
+	sthread_t queuedReaders;
+	sthread_t queuedWriters;
+};
 
 typedef struct sthread_rwlock_struct sthread_rwlock_t;
 

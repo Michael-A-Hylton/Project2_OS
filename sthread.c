@@ -16,7 +16,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/mman.h>
-#include "/home/michael-hylton/Desktop/Operating_Systems/sthread/sthread.h"
+#include "sthread.h"
 
 /* make the max stack size 4MB */
 #define DEF_STACK_SIZE 4194304
