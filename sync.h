@@ -11,8 +11,8 @@
 struct sthread_rwlock_struct {
         int numOfReaders;
 	int numOfWriters;
-	sthread_t queuedReaders;
-	sthread_t queuedWriters;
+	sthread_t *QueuedReaders;
+	sthread_t *QueuedWriters;
 };
 
 typedef struct sthread_rwlock_struct sthread_rwlock_t;
